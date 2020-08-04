@@ -1,0 +1,285 @@
+Navigation
+
+In Linux, files and directories are organized hierarchically, that is, there is a certain initial directory called the root. It contains files and subdirectories, which in turn contain files and their subdirectories.
+pwd
+
+The command  pwd, short for print working directory , displays the current location in the directory structure.
+cd
+
+The command  cd allows you to change to a new directory.
+
+mkdir
+
+The command  mkdir creates a new directory in the current directory.
+
+-----------------------------
+
+Basic commands:
+
+man
+
+Command  man displays command guides. For example, the following command will display all information about the command  cat:
+
+$ man cat
+
+cat
+
+The command  cat reads the file passed as an argument and prints its contents over standard output. Passing multiple files as an argument will output the concatenated contents of all files.
+echo
+
+The command  echo prints its arguments over the standard output pipe.
+
+$ echo Hello World
+  Hello World
+
+If called  echo with no arguments, an empty string is printed.
+head
+
+The command  head reads the first 10 lines of any transmitted text and prints them over the standard pipe. The number of lines displayed can be changed:
+
+$ head -50 test.txt
+
+tail
+
+The command  tail works similarly to the command  head, but reads lines from the end:
+
+$ tail -50 test.txt
+
+You can also view the lines added to the file in real time using the flag  -f:
+
+$ tail -f test.txt
+
+less
+
+The command  less allows you to navigate through the transferred file or piece of text, and in both directions.
+
+$ less test.txt
+$ ps aux | less
+
+More about symbol purpose | will be discussed below in the command section  history.
+
+true
+
+The command  true always returns zero as an output status to indicate success.
+false
+
+The command  false always returns non-zero as an output status to indicate failure.
+$?
+
+$? Is a variable that contains the output status of the last command run. The status usually refers to the return code of the  program. 0 means successful execution of the program, any value greater than 0 reflects the fact that some errors occurred during the execution. By the way, this is why in bash 0 is considered true, and everything that is not 0 is false:
+
+$ true
+$ echo $?
+  0
+$ false
+$ echo $?
+  1
+
+grep
+
+The command  grep searches for the given string in the specified file:
+
+$ cat users.txt
+  user:student password:123
+  user:teacher password:321
+$ grep 'student` file1.txt
+  user:student password:123
+
+grep can also accept multiple files and regular expressions to refine the format of the text.
+You can also check out  the regex manual . We also have a tutorial  on Python regulars for beginners on our site 
+
+sed
+
+The command  sed is a streaming editor that transforms input text data. Usually use it to replace the expression as follows:  s/regexp/replacement/g. For example, the following code will replace all the words "Hello" with "Hi":
+
+$ cat test.txt
+  Hello World
+$ sed 's/Hello/Hi/g' test.txt
+  Hi World
+
+You can also check out  the sed manual .
+history
+
+The command  history displays the command line history. It is usually used in conjunction with a command  grep to find a specific command.
+For example, the following code will find all commands containing a string  g++:
+
+$ history | grep g++
+  155  g++ file1.txt
+  159  g++ file2.txt
+
+The symbol is also used here | Is the so-called pipeline (pipe). Thanks to it, 
+you can redirect the output of one command to the input of another - thus, in the example above, all history, which is normally printed by the command historydirectly to the terminal output, will be redirected to grep as input. We won't see the command output  history, but we will see the command output  grep.
+
+It can be quite difficult to understand without practice, so the experiment on their own, for example with the teams  ls,  
+history, ps (described below) to command output in  grep,  sedor  lessexample.
+export
+
+The command  export sets environment variables to pass to child processes. For example, this is how you can pass a variable namewith the valuestudent :
+
+$ export name=student
+
+ps
+
+The command  ps displays information about running processes.
+
+$ ps
+  PID TTY          TIME CMD
+  35346 pts/2    00:00:00 bash
+
+Four items are displayed:
+
+    Process ID (PID),
+    terminal type (TTY),
+    process running time (TIME),
+    the name of the command that started the process (CMD).
+
+awk
+
+The command  awk finds and replaces text in files according to a given pattern:awk 'pattern {action}' test.txt
+wget
+
+The command  wget downloads files from the web and places them in the current directory.
+
+$ wget https://github.com/mikeizbicki/ucr-cs100
+
+nc
+
+Command  nc is a utility for network debugging. You can also check out  the nc manual .
+ping
+
+The team is  ping testing the network connection.
+
+$ ping google.com
+  PING google.com (74.125.224.34) 56(84) bytes of data.
+  64 bytes from lax17s01-in-f2.1e100.net (74.125.224.34): icmp_req=1 ttl=57 time=7.82 ms
+  --- google.com ping statistics ---
+  1 packets transmitted, 1 received, 0% packet loss, time 8ms
+  rtt min/avg/max/mdev = 7.794/8.422/10.792/0.699 ms
+
+The statistics at the end show the number of connections made before the command completed and the time they were completed.
+git
+
+Git Is a popular version control system. You can also check out  the git manual  and our materials .
+Environment variables
+
+Environment variables are named variables that contain values ​​used by one or more applications.
+
+The variable  PATH contains a list of directories in which the system searches for executable files.
+The variable  HOME contains the path to the home directory of the current user.
+
+-----------------
+
+Connectors:
+
+Connectors allow you to run multiple commands at the same time.
+$ true && echo Hello
+  Hello
+$ false || echo Hello
+  Hello
+$ echo Hello ; ls
+  Hello
+  test.txt file1.txt file2.txt
+
+Conveyors
+
+Conveyors, or pipes, allow you to connect the input and output channels of various commands. 
+In the following example, the command output  ls will be piped to  head , and only the first 10 items will be printed as a result.
+
+$ ls -l | head
+
+I / O redirection
+Redirecting output
+
+The characters > and  are used for standard output redirection  >>.
+
+For example, this code will pipe the output  ls to a file rather than to the screen:
+
+$ ls > files.txt
+$ cat files.txt
+  file1.cpp sample.txt
+
+If the file does not exist, it is created, and if it exists, it is overwritten. To avoid overwriting, 
+it is worth using the command  >> - it appends data to the end of the file.
+Redirecting input
+
+The symbol is used for standard output redirection  <. The following example  sort takes input from a file rather than the keyboard:
+
+$ cat files.txt
+  c
+  b
+$ sort < files.txt
+  b
+  c
+
+The command  sort prints the contents of the file to the screen because we did not redirect the output. 
+You can do it like this:
+
+$ sort < files.txt > files_sorted.txt
+
+Advanced redirection
+
+Adding  & to  > results in redirecting both the standard output stream and the error stream. 
+For example, a file  test.cpp will output line stdoutto  cout and line stderr to  cerr.
+
+$ g++ test.cpp
+$ ./a.out >& test.txt
+$ cat test.txt
+  stdout
+  stderr
+
+If you want to display a specific file descriptor, you can assign its number to  >.
+Name	Descriptor	Description
+stdin	0	Standard input stream
+stdout	1	Standard output stream
+stderr	2	Standard error output stream
+
+For example, to redirect stderrto,  test.txt you need to do the following:
+
+$ g++ test.cpp
+$ ./a.out 2> test.txt
+  stdout
+$ cat test.txt
+  stderr
+  Access rights
+
+The command  ls -l displays a lot of information about the permissions for each file:
+
+$ ls -l test.txt
+  -rw-rw-r--  1  user  group  1097374 January 26 2:48 test.txt
+  chmod
+
+The command  chmod changes the permissions of the file. 
+Here are typical flag combinations for changing the rights of specific users:
+
+You can call  chmod with a description of actions on a specific file. The symbol  - means the removal of rights, the symbol means the  + addition. The following example will make the file read / write to the owner and group:
+
+$ chmod ug+rw test.txt
+$ ls -l test.txt
+  -rw-rw----  1  user  group  1097374 January 26 2:48 test.txt
+
+In addition,  chmod it can be used with octal numbers, where  1 is the presence of rights, and  0 is the absence:
+
+rwx = 111 = 7
+rw- = 110 = 6
+r-x = 101 = 5
+r-- = 100 = 4
+
+The following command will work the same as the previous one:
+
+$ chmod 660 test.txt
+
+Keyboard shortcuts
+Combination	Description
+CTRL-A	Move cursor to beginning of line
+CTRL-E	Move cursor to end of line
+CTRL-R	Search by history
+CTRL-W	Cut the last word
+CTRL-U	Cut everything up to the cursor
+CTRL-K	Cut everything after the cursor
+CTRL-Y	Return the last cut line
+CTRL-_	Cancellation
+CTRL-L	Clearing the terminal screen
+---------------------------------------------
+
+    Source https://tproger.ru/translations/bash-cheatsheet/
+    

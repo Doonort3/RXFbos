@@ -1,13 +1,14 @@
-#!/bin/bash
-# rxfBOS
+#!/usr/bin/env bash
 
-select command in "Readme" "File creation" "File modification" "Delete file" "Test the network for connection" "Help for Bash" "Open console" "Authors"
+echo -e "\e[1mEnter the number corresponding to the menu item:\e[0m"
+select command in "Readme!*" "File creation" "File modification" "Delete file" "Test the network for connection" "Help for Bash" "Open console" "Authors" "exit"
 do
 echo
-echo "$command"
+echo -e "\e[1m$command\e[0m"
 echo ">>"
 break
 done
+
 
 # readme
 if [[ $command == "Readme" ]]; then
@@ -19,10 +20,14 @@ fi
 
 # file created
  if [[ $command == "File creation" ]]; then
-     echo "Enter file name:"
+     echo "Select disk*:"
+     read DISKFORFILE
+     echo "Select user*:"
+     read USERDISKFILE
+     echo "Enter file name*:"
      read filename
-     touch diskname/Documents/$filename
-     echo "File $filename created in diskname/Documents/$filename"
+     touch $DISKFORFILE/$USERDISKFILE/Documents/$filename
+     echo "File '$filename' created in diskname/Documents/$filename"
      sleep 5
      echo "-----------------------------"
      ./Scripthelper.sh
@@ -61,7 +66,7 @@ echo "-----------------------------"
 
 # delete file
  if [[ $command == "Delete file" ]]; then
-     echo "Enter the name of the file to delete:"
+     echo "Enter the full path to the file"
      read confirmfilefordelete
      if [ -e $confirmfilefordelete ]; then
           rm $confirmfilefordelete
@@ -121,6 +126,7 @@ echo "-----------------------------"
  fi
 
  if [[ $command == 'Authors' ]]; then
+     clear
      echo "              Code: doonort3."
      sleep 0.8
      echo "             Idea: Doonort3."
@@ -153,6 +159,11 @@ echo "-----------------------------"
           sleep 5
      echo "-----------------------------"
 fi
+
+if [[ $command == 'exit' ]]; then
+     exit 0
+fi
+
 
 
  

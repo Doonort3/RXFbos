@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+
 # rxfBOS
 
 clear
@@ -6,16 +8,18 @@ echo "Running..."
 # sleep 10
 sleep 2
 clear
-echo "Welcome to RXFbos!"
-echo "version 1.0.2"
+echo -e "\e[1mWelcome to rxfbOS\e[0m"
+echo "version 1.1"
 echo
-select command in "Readme!*" "File creation" "File modification" "Delete file" "Test the network for connection" "Help for Bash" "Open console" "Authors"
+echo -e "\e[1mEnter the number corresponding to the menu item:\e[0m"
+select command in "Readme!*" "File creation" "File modification" "Delete file" "Test the network for connection" "Help for Bash" "Open console" "Authors" "exit"
 do
 echo
-echo "$command"
+echo -e "\e[1m$command\e[0m"
 echo ">>"
 break
 done
+
 
 # readme
 if [[ $command == "Readme!*" ]]; then
@@ -27,9 +31,13 @@ fi
 
 # file created
  if [[ $command == "File creation" ]]; then
-     echo "Enter file name:"
+     echo "Select disk*:"
+     read DISKFORFILE
+     echo "Select user*:"
+     read USERDISKFILE
+     echo "Enter file name*:"
      read filename
-     touch diskname/Documents/$filename
+     touch $DISKFORFILE/$USERDISKFILE/Documents/$filename
      echo "File '$filename' created in diskname/Documents/$filename"
      sleep 5
      echo "-----------------------------"
@@ -162,6 +170,11 @@ echo "-----------------------------"
           sleep 5
      echo "-----------------------------"
 fi
+
+if [[ $command == 'exit' ]]; then
+     exit 0
+fi
+
 
 
  

@@ -1,0 +1,16 @@
+enter the following commands:
+
+mkdir DOS* (Drive name must start on DOS)
+$ mkdir DOSdisk
+
+cd Namedisk 
+$ cd DOSdisk
+
+mkdir process (Enter the name of the process or identifier)
+$ mkdir DNDOS
+
+
+cp SOURCE TARGET/ (Copy DNDOS to system files)
+$ cd ..
+$ cp DNDOS.sh DOSdisk/DNDOS
+

@@ -24,6 +24,8 @@ Restart the script
 Now you have a disk where the files that you will create on the mini pc will be stored.
 ##### Press enter as prompted by the script.
 And then you will be greeted with a message: enter the username that you will use for your home directory, select the drive where the home directory will be installed and finally enter the username :) 
+You will be prompted to create a DOS disk to work with the new update, everything is simple there, but! the disc name must start with DOS!
+
 Now you can enjoy your newly baked mini pc! 
 
 ##### History of this script

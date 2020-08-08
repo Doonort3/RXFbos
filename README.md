@@ -17,12 +17,12 @@ Next, you will see a message stating that a virtual disk has not been created, y
 
 ##### If you did everything correctly, you will see a notification about it.
 
-Restart the script
-
-`$ ./systemcheck.sh`
+##### You will need to create a DOS disk
+The choice is before you.
+Enter the name of the DOS disc which must begin with "DOS"
+Next 'home catalog'
 
 Now you have a disk where the files that you will create on the mini pc will be stored.
-##### Press enter as prompted by the script.
 And then you will be greeted with a message: enter the username that you will use for your home directory, select the drive where the home directory will be installed and finally enter the username :) 
 You will be prompted to create a DOS disk to work with the new update, everything is simple there, but! the disc name must start with DOS!
 
@@ -31,7 +31,7 @@ Now you can enjoy your newly baked mini pc!
 ##### History of this script
 Its creation began on 02.08.2020
 
-The first thing I wanted to recreate is something similar to ms-dos, the first functions I came up with myself are file creation, file modification, delete file, test the network, help for bash. The next day I added more features. After even more functions. For the next update, I have prepared something grand, to be more precise, the system of disks and paths for storing files, and now it is ready with my virtual DOS. Thanks to those who follow me, I love.
+The first thing I wanted to recreate is something similar to ms-dos, the first functions I came up with myself are file creation, file modification, delete file, test the network, help for bash. The next day I added more features. After even more functions. For the next update, I have prepared something grand, to be more precise, the system of disks and paths for storing files, and now it is ready with my virtual DOS. Thanks to those who follow me, love and forgive!
 
 
 ##### How to contact me?

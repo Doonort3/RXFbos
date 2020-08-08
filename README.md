@@ -24,7 +24,7 @@ Next 'home catalog'
 
 Now you have a disk where the files that you will create on the mini pc will be stored.
 And then you will be greeted with a message: enter the username that you will use for your home directory, select the drive where the home directory will be installed and finally enter the username :) 
-You will be prompted to create a DOS disk to work with the new update, everything is simple there, but! the disc name must start with DOS!
+You will be prompted to create a DOS disk to work with the new update, everything is simple there, but! the disc name must start with DOS! Learn the rest of the functions yourself) Everything is described!
 
 Now you can enjoy your newly baked mini pc! 
 

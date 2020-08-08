@@ -9,6 +9,20 @@ read USER
 if [ -e 'disk'*/$USER ]; then
      echo -e "\e[1;32;1mYour disk is fully configured, thank you very much for your time.\e[0m"
      sleep 4.2
+
+     echo "Choose where to boot from"
+          select WHEREBOOT in "rxfBOS" "DN-DOS"
+          do
+          break
+          done
+          if [[ $WHEREBOOT == 'rxfBOS' ]]; then
+               ./main.sh
+          fi
+
+          if [[ $WHEREBOOT == 'DN-DOS' ]]; then
+               ./DNDOS.sh -h
+          fi
+
 else
       echo `tput setaf 3`The disc is found, you can use it. Go through the home directory setup`tput sgr0`
      echo "Select disk:"
@@ -21,6 +35,20 @@ else
 
      if [ -e $DISKSELECT/$USERNAME -a -e $DISKSELECT/$USERNAME/Documents ]; then
           echo `tput setaf 2`Setting complite, congratulations!`tput sgr0`
+
+          echo "Choose where to boot from"
+          select WHEREBOOT in "rxfBOS" "DN-DOS"
+          do
+          break
+          done
+          if [[ $WHEREBOOT == 'rxfBOS' ]]; then
+               ./main.sh
+          fi
+
+          if [[ $WHEREBOOT == 'DN-DOS' ]]; then
+               ./DNDOS.sh -h
+          fi
+
           sleep 3
      fi
 
@@ -47,9 +75,11 @@ else
                     echo `tput setaf 1`                 THERE CAN BE NUMEROUS ERRORS!!`tput sgr0`
                     echo
                     echo
+                    exit 0
                     fi
           else
                echo 'Ok!'
+               exit 0
      fi
 fi
 echo
@@ -72,6 +102,4 @@ fi
                read indiorname
                mkdir $selectdiskdos/$indiorname
                cp DNDOS.sh $selectdiskdos/$indiorname
-     else
-               echo "Many DOS functions will not function correctly!"
      fi

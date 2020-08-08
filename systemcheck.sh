@@ -77,22 +77,7 @@ sleep 0.1
                              
 
                              if [ -e 'disk'* -a -e 'DOS'* ]; then
-                                   echo "Your mini pc is set up!"
-                                   echo "Choose where to boot from"
-                                   select WHEREBOOT in "rxfBOS" "DN-DOS"
-                                   do
-                                   break
-                                   done
-                         
-                                   if [[ $WHEREBOOT == 'rxfBOS' ]]; then
-                                         ./main.sh
-                                   fi
-
-                                   if [[ $WHEREBOOT == 'DN-DOS' ]]; then
-                                         ./DNDOS.sh -h
-                                   fi
-
-                                   
+                                    ./ISS.sh
                              else
                                    echo "Installation program:"
                                    echo "I recommend 'ISS'"
